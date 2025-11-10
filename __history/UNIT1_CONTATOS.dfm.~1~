@@ -1,0 +1,16 @@
+object FORM_CONTATOS: TFORM_CONTATOS
+  Left = 0
+  Top = 0
+  Caption = 'GEST'#195'O DE CONTATOS'
+  ClientHeight = 441
+  ClientWidth = 624
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -12
+  Font.Name = 'Segoe UI'
+  Font.Style = []
+  Touch.ParentTabletOptions = False
+  Touch.TabletOptions = [toPressAndHold]
+  TextHeight = 15
+end
