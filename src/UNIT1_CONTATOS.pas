@@ -12,7 +12,7 @@ uses
   System.Rtti, System.Bindings.Outputs, Vcl.Bind.Editors, Data.Bind.EngExt,
   Vcl.Bind.DBEngExt, Data.Bind.Components, Vcl.StdCtrls, FireDAC.Comp.DataSet,
   Data.Bind.DBScope, Vcl.ExtCtrls, Vcl.Buttons, Vcl.DBCtrls, Vcl.Grids,
-  Vcl.DBGrids;
+  Vcl.DBGrids, Vcl.Skia;
 
 type
   TFORM_CONTATOS = class(TForm)
@@ -40,7 +40,9 @@ type
     txt_PROCURA: TEdit;
     btnProcura: TButton;
     GRID_CONTATOS: TDBGrid;
-    DBImage1: TDBImage;
+    img_FOTO: TImage;
+    btnProcurarImg: TSpeedButton;
+    OpenDialog1: TOpenDialog;
     procedure FormCreate(Sender: TObject);
     procedure ConectaBanco();
     procedure BuscaContatos();
@@ -62,6 +64,7 @@ type
 
     procedure FDContatosBeforePost(DataSet: TDataSet);
     procedure btnProcuraClick(Sender: TObject);
+    procedure btnProcurarImgClick(Sender: TObject);
 
   private
     { Private declarations }
@@ -157,6 +160,15 @@ begin
   BuscaContatoPorId;
 end;
 
+procedure TFORM_CONTATOS.btnProcurarImgClick(Sender: TObject);
+begin
+  OpenDialog1.Execute();
+  img_FOTO.Picture.LoadFromFile(OpenDialog1.FileName);
+  FDContatos.Edit;
+  FDContatos.FieldByName('img_perfil').AsString := OpenDialog1.FileName;
+  FDContatos.Post;
+end;
+
 
 // Funções
 procedure TFORM_CONTATOS.BuscaContatos();
@@ -166,6 +178,15 @@ begin
   txt_TELEFONE.Text := FDContatos.FieldByName('telefone').AsString;
   txt_EMAIL.Text := FDContatos.FieldByName('email').AsString;
   txt_OBS.Text := FDContatos.FieldByName('observacao').AsString;
+
+  if FDContatos.FieldByName('img_perfil').Value <> null then
+  begin
+    if FileExists(FDContatos.FieldByName('img_perfil').AsString) then
+      img_FOTO.Picture.LoadFromFile(FDContatos.FieldByName('img_perfil').Value)
+  end
+  else
+    img_FOTO.Picture := nil;
+
 end;
 
 procedure TFORM_CONTATOS.CriaContato();
