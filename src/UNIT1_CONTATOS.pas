@@ -39,6 +39,8 @@ type
     btnCancelar: TButton;
     txt_PROCURA: TEdit;
     btnProcura: TButton;
+    GRID_CONTATOS: TDBGrid;
+    DBImage1: TDBImage;
     procedure FormCreate(Sender: TObject);
     procedure ConectaBanco();
     procedure BuscaContatos();
@@ -155,8 +157,8 @@ begin
   BuscaContatoPorId;
 end;
 
-// Funções
 
+// Funções
 procedure TFORM_CONTATOS.BuscaContatos();
 begin
   txt_ID.Text := FDContatos.FieldByName('id').AsString;

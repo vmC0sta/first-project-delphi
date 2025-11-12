@@ -261,6 +261,26 @@ object FORM_CONTATOS: TFORM_CONTATOS
     TabOrder = 13
     OnClick = btnProcuraClick
   end
+  object GRID_CONTATOS: TDBGrid
+    Left = 48
+    Top = 480
+    Width = 841
+    Height = 185
+    DataSource = DataSource1
+    TabOrder = 14
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -12
+    TitleFont.Name = 'Segoe UI'
+    TitleFont.Style = []
+  end
+  object DBImage1: TDBImage
+    Left = 488
+    Top = 93
+    Width = 105
+    Height = 105
+    TabOrder = 15
+  end
   object FDConnection1: TFDConnection
     Params.Strings = (
       

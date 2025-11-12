@@ -123,9 +123,12 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="UNIT1_CONTATOS.pas">
-            <Form>FORM_CONTATOS</Form>
+        <DCCReference Include="src\UNIT2_MENU.pas">
+            <Form>FORM_MENU</Form>
             <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="src\UNIT1_CONTATOS.pas">
+            <Form>FORM_CONTATOS</Form>
         </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
